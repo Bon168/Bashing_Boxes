@@ -8,12 +8,11 @@ while true; do
 
 	echo "Welcome user"
 echo "You have five different options"
-wait 1
 echo "option 1 |Print list"
 echo "option 2 |Print item at X position in list"
 echo "option 3 |Add item to list"
-echo "option 3 |Add item to list remove last item from list"
-echo "option 4 |remove item - from X position"
+echo "option 4 |Add item to list remove last item from list"
+echo "option 5 |remove item - from X position"
 echo "option 6 |Exit"
 
 read -p "Choose 1 option from 1 to 5"
@@ -67,28 +66,36 @@ Leavegame() {
 
 
 case $choice for in 
-	1) 
+	1) printarray()
 	
 
 	done
 		;;
-	2)
-		echo "cookie cutters"
-	fi
+	2) printitemfromlist()
+	
+	
 
 		;;
 
-    3) echo "sprite"
-	fi
+    3) Additem()
+	
 
         ;;
 
-    4) echo "Removing one from list"; then
-    	echo "${array1[@]}"
-    fi
+    4) Additem_Remove()
+    	
+    
     	;;
 
-    5) exit
+    5) Removeitem()
+
+       ;;
+
+    6) Leavegame()
+
+       ;;
+
+
 
 esac
 
