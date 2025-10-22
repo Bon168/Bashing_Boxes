@@ -6,16 +6,20 @@ array=("ginger" "Pins" "Badge" "Caramel apple" "Misletoe" "Cookie cutters" "soup
 while true; do
 
 
-	echo "Welcome user"
-	echo "You have five different options"
-	echo "option 1 |Print list"
-	echo "option 2 |Print item at X position in list"
-	echo "option 3 |Add item to list"
-	echo "option 4 |Add item to list remove last item from list"
-	echo "option 5 |remove item - from X position"
-	echo "option 6 |Exit"
+	echo " Welcome user
 
-	read -p "Choose 1 option from 1 to 5:" choice
+	 You have five different options
+	 ==========
+	 option 1 |Print list
+	 option 2 |Print item at X position in list
+	 option 3 |Add item to list
+	 option 4 |remove last item from list
+	 option 5 |remove item - from X position
+	 option 6 |Exit
+
+	"
+
+	read -p "Choose 1 option from 1 to 6:" choice
 
 	printarray() {
 		echo "print list"
@@ -37,7 +41,7 @@ while true; do
 	}
 
 
-	Additem_Remove() {
+	item_Removelast() {
 	echo "When you add a item to the list, the last item will be removed:"
 	read -p "what would you like to add:" answer4
 	array+=($answer4)
@@ -66,7 +70,7 @@ while true; do
 			;;
 	   3) Additem
 	   	;;
-	   4) Additem_Remove
+	   4) item_Removelast
 	    	;;
 	   5) Removeitem
 	    	;;
