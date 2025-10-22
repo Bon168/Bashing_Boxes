@@ -15,10 +15,10 @@ echo "option 4 |Add item to list remove last item from list"
 echo "option 5 |remove item - from X position"
 echo "option 6 |Exit"
 
-read -p "Choose 1 option from 1 to 5"
+read -p "Choose 1 option from 1 to 5" choice
 
 printarray() {
-	echo "print list"; then
+	echo "print list"
 		echo "${array[@]}"
 }
 
@@ -26,7 +26,7 @@ printarray() {
 
 Additem() {
 read -p "What would you item would you like to add to the list:" answer
-local item+=($answer)
+array+=($answer)
 }
 
 
@@ -36,18 +36,19 @@ echo "$answer3"
 
 }
 
-Additem_Remove()
+
+Additem_Remove() {
 echo "When you add a item to the list, the last item will be removed"
 read -p "what would you like to add" answer4
-local item1+=($answer4)
-unset ${array[index10]}
+array+=($answer4)
+unset ${array[index-5]}
 echo ${array[index10]} "clock tower has been deleted and $answer4 has been added"
-
+}
 
 
 
 Removeitem() {
-read -p "Which Item would you like to remove from the list" answer1
+read -p "Which Item would you like to remove from the list" index 
 unset ${array[$index]}
 echo ${array[$index]} "The $index has been removed from the list"
 }
@@ -65,39 +66,23 @@ Leavegame() {
 
 
 
-case $choice for in 
+case $choice in
 	1) printarray()
-	
-
-	done
 		;;
 	2) printitemfromlist()
-	
-	
-
 		;;
 
     3) Additem()
-	
-
         ;;
 
     4) Additem_Remove()
-    	
-    
     	;;
 
     5) Removeitem()
-
        ;;
-
     6) Leavegame()
-
        ;;
-
-
 
 esac
 
-;;
-
+done
