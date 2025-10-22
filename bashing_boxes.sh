@@ -15,7 +15,7 @@ while true; do
 	echo "option 5 |remove item - from X position"
 	echo "option 6 |Exit"
 
-	read -p "Choose 1 option from 1 to 5" choice
+	read -p "Choose 1 option from 1 to 5:" choice
 
 	printarray() {
 		echo "print list"
@@ -31,18 +31,18 @@ while true; do
 
 
 	printitemfromlist() {
-	read -p "What would you like to print from the list: ${array[@]}" answer3
-	echo "$answer3"
+	read -p "printed : ${array[@]}" 
+	
 
 	}
 
 
 	Additem_Remove() {
 	echo "When you add a item to the list, the last item will be removed:"
-	read -p "what would you like to add" answer4
+	read -p "what would you like to add:" answer4
 	array+=($answer4)
-	unset ${array[index-5]}
-	echo ${array[index10]} "clock tower has been deleted and $answer4 has been added"
+	unset ${array[index-1]}
+	echo ${array[index10]} " has been deleted and $answer4 has been added"
 	}
 
 
