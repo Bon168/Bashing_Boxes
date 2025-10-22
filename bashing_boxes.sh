@@ -54,7 +54,7 @@ echo ${array[$index]} "The $index has been removed from the list"
 }
 
 Leavegame() {
-	echo "leaving the game"; then
+	echo "leaving the game"
 		exit
 }
 
@@ -67,21 +67,23 @@ Leavegame() {
 
 
 case $choice in
-	1) printarray()
+	1) printarray() 
 		;;
-	2) printitemfromlist()
+	2) printitemfromlist() 
 		;;
 
-    3) Additem()
-        ;;
+    3) Additem() 
+   	;;
 
-    4) Additem_Remove()
+    4) Additem_Remove() 
     	;;
 
-    5) Removeitem()
-       ;;
-    6) Leavegame()
-       ;;
+    5) Removeitem() 
+    	;;
+       
+    6) Leavegame() 
+    	;;
+       
 
 esac
 
