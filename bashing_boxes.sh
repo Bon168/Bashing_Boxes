@@ -35,7 +35,9 @@ while true; do
 
 
 	printitemfromlist() {
-	read -p "printed : ${array[@]}" 
+	read -p "pick a number between 0-9" number
+	echo ${array[$number]}
+
 	
 
 	}
