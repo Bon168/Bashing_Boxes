@@ -54,13 +54,13 @@ while true; do
 
 
 	Removeitem() {
-	read -p "Which Item would you like to remove from the list:" index 
+	read -p "Which Item would you like to remove from the list pick a option between 0-9:" index 
 	unset ${array[$index]}
-	echo ${array[$index]} "The $index has been removed from the list"
+	echo ${array[$index]} "this has been removed from the list"
 	}
 
 	Leavegame() {
-		echo "leaving the game"
+		echo "Goodbye my friend"
 			exit
 	}
 
