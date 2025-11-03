@@ -15,11 +15,15 @@ while true; do
 	 option 3 |Add item to list
 	 option 4 |remove last item from list
 	 option 5 |remove item - from X position
-	 option 6 |Exit
+	 option 6 |Saving your current box to a file
+	 option 7 |Loading a previously saved box
+	 option 8 |Listing existing saved boxes
+	 option 9 |Deleting a saved box
+	 option 10 |Exit
 
 	"
 
-	read -p "Choose 1 option from 1 to 6:" choice
+	read -p "Choose 1 option from 1 to 10:" choice
 
 	printarray() {
 		echo "print list"
@@ -58,6 +62,44 @@ while true; do
 	unset ${array[$index]}
 	echo ${array[$index]} "this has been removed from the list"
 	}
+
+
+	SavingBox() {
+	echo "what do you want so name your box:" 
+	read filename
+	if [ -z $filename ] then
+		echo "Could not save"
+		return
+
+	fi
+
+		mkdir -p
+
+		echo "saving $filename.txt to data folder"
+		echo "Box $filename was saved successfully"
+
+}
+
+
+LoadingoldBox() {
+read -p "enter the name of the box you would like to load:" filename
+waytofile="$Data/$filename.Boxes"
+if [-z $filename ]; then
+	echo "file was not found"
+	return
+fi
+
+echo "Box $filename was found successfully"
+
+}
+
+ListallBoxingfiles() {
+	echo "listing all box files"
+	print 
+}
+
+
+
 
 	Leavegame() {
 		echo "Goodbye my friend"
