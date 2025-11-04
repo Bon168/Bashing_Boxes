@@ -95,9 +95,25 @@ echo "Box $filename was found successfully"
 
 ListallBoxingfiles() {
 	echo "listing all box files"
-	print 
+	if [ -z "$(ls -A $Data/)"]; then
+		echo "No saved boxes"
+	else
+		ls "$Data/"
+	fi
 }
 
+
+deleteBox() {
+	read -p "Enter name of box you would like to delete" filename
+	waytofile1="$Data/${filename}.box"
+	if [ -f "$waytofile1" ]; then
+		rm "$waytofile1"
+
+		echo "$filename has been deleted"
+	else
+		echo "Error file was not found"
+	fi
+}
 
 
 
@@ -118,7 +134,16 @@ ListallBoxingfiles() {
 	    	;;
 	   5) Removeitem
 	    	;;
-	   6) Leavegame
+	   6) SavingBox
+	   	;;
+		7)	LoadingoldBox
+			;;
+		8) ListallBoxingfiles
+			;;
+		9) deleteBox
+			;;
+	   
+	   10) Leavegame
 	    	;;       
 	esac
 done
