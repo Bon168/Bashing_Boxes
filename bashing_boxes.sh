@@ -1,6 +1,7 @@
 #!/bin/bash
 
 array=("ginger" "Pins" "Badge" "Caramel apple" "Misletoe" "Cookie cutters" "soup can" "Mustard" "Tennis racket" "Clock tower")
+datafolder="/home/chinae/Bashing_Boxes/data"
 
 
 while true; do
@@ -65,19 +66,21 @@ while true; do
 
 
 	SavingBox() {
-	echo "what do you want so name your box:" 
-	read filename
-	if [ -z $filename ] then
+	
+	read  -p "what do you want to name your box:" filename
+	if [ -z "$filename" ]; then
 		echo "Could not save"
 		return
-
 	fi
+    # "%s" tell bash to print a string in the array and "\n" moves to a new line for every string in the array
+	  printf "%s\n"  "${array[@]}" > "$datafolder/$filename.txt"
 
-		mkdir -p
+
+		
 
 		echo "saving $filename.txt to data folder"
 		echo "Box $filename was saved successfully"
-
+	
 }
 
 
@@ -94,12 +97,9 @@ echo "Box $filename was found successfully"
 }
 
 ListallBoxingfiles() {
-	echo "listing all box files"
-	if [ -z "$(ls -A $Data/)"]; then
-		echo "No saved boxes"
-	else
-		ls "$Data/"
-	fi
+	
+		ls "$datafolder"
+	
 }
 
 
@@ -142,7 +142,6 @@ deleteBox() {
 			;;
 		9) deleteBox
 			;;
-	   
 	   10) Leavegame
 	    	;;       
 	esac
