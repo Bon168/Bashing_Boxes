@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 array=("ginger" "Pins" "Badge" "Caramel apple" "Misletoe" "Cookie cutters" "soup can" "Mustard" "Tennis racket" "Clock tower")
 datafolder="/home/chinae/Bashing_Boxes/data"
 
@@ -86,13 +86,15 @@ while true; do
 
 LoadingoldBox() {
 read -p "enter the name of the box you would like to load:" filename
-waytofile="$Data/$filename.Boxes"
-if [-z $filename ]; then
-	echo "file was not found"
+datafolder="/home/chinae/Bashing_Boxes/data"
+
+if [ -f "$filename.txt" ]; then
+	echo "File was not found"
 	return
+elif [[ -e $filename.txt ]]; then
+	echo "Box $filename was found"
 fi
 
-echo "Box $filename was found successfully"
 
 }
 
@@ -100,7 +102,7 @@ ListallBoxingfiles() {
 	
 		ls "$datafolder"
 	
-}
+}	
 
 
 deleteBox() {
