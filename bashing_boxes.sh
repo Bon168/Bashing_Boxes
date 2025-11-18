@@ -4,6 +4,7 @@ array=("ginger" "Pins" "Badge" "Caramel apple" "Misletoe" "Cookie cutters" "soup
 datafolder="/home/chinae/Bashing_Boxes/data"
 
 
+
 while true; do
 
 
@@ -20,7 +21,9 @@ while true; do
 	 option 7 |Loading a previously saved box
 	 option 8 |Listing existing saved boxes
 	 option 9 |Deleting a saved box
-	 option 10 |Exit
+	 option 10|Generate random box from file
+	 option 11|Load item 
+	 option 12 |Exit
 
 	"
 
@@ -56,13 +59,16 @@ while true; do
 	echo ${array[index10]} " has been deleted and $answer4 has been added"
 	}
 
-
+array2="home/chinae/Bashing_Boxes/object.pool.txt"
+# unset removes the function so that it can no longer be called
 
 	Removeitem() {
 	read -p "Which Item would you like to remove from the list pick a option between 0-9:" index 
 	unset ${array[$index]}
 	echo ${array[$index]} "this has been removed from the list"
 	}
+
+
 
 
 	SavingBox() {
@@ -75,36 +81,46 @@ while true; do
     # "%s" tell bash to print a string in the array and "\n" moves to a new line for every string in the array
 	  printf "%s\n"  "${array[@]}" > "$datafolder/$filename.txt"
 
-
-		
-
 		echo "saving $filename.txt to data folder"
 		echo "Box $filename was saved successfully"
 	
-}
+	}
 
 
-LoadingoldBox() {
-read -p "enter the name of the box you would like to load:" filename
-datafolder="/home/chinae/Bashing_Boxes/data"
 
-if [ -f "$filename.txt" ]; then
-	echo "File was not found"
-	return
-elif [[ -e $filename.txt ]]; then
-	echo "Box $filename was found"
-fi
-
-
-}
-
-ListallBoxingfiles() {
+	LoadingoldBox() {
+	read -p "enter the name of the box you would like to load:" filename
+	datafolder="/home/chinae/Bashing_Boxes/data"
+	filepath="$datafolder/$filename.txt"
 	
-		ls "$datafolder"
-	
-}	
+
+	if [ -f "$filename.txt" ]; then
+		echo "File was not found"
+		return
+	fi
+
+	echo "loading box $filename"
+
+	mapfile -t box < "$filepath"
+	array=("${box[@]}")
+
+	echo "$filename has been found!"
+
+	}
 
 
+
+	ListallBoxingfiles() {
+		
+			ls "$datafolder"
+		
+		
+	}	
+
+
+
+
+## -f checks if the file exits and if it is a regular file
 deleteBox() {
 	read -p "Enter name of box you would like to delete" filename
 	waytofile1="$Data/${filename}.box"
@@ -117,12 +133,19 @@ deleteBox() {
 	fi
 }
 
-
-
 	Leavegame() {
 		echo "Goodbye my friend"
 			exit
 	}
+
+	#load_object_pool() {
+	## shuf -n is a head count and it shuffles the positive integer of the amount in front of  -n
+	## home/chinae/whatever/path is whereit get the random words from , it reads each line as one,
+	## > tells it where to go 
+	## home /chinae /destination is you destination , this is where it will eend up
+#	echo 
+	#}
+
 
 
 	case $choice in
