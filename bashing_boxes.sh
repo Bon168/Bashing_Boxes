@@ -3,9 +3,13 @@ clear
 array=("ginger" "Pins" "Badge" "Caramel apple" "Misletoe" "Cookie cutters" "soup can" "Mustard" "Tennis racket" "Clock tower")
 datafolder="/home/chinae/Bashing_Boxes/data"
 
+	## shuf -n is a head count and it shuffles the positive integer of the amount in front of  -n
+	## home/chinae/whatever/path is whereit get the random words from , it reads each line as one,
+	## > tells it where to go 
+	## home /chinae /destination is you destination , this is where it will eend up
+#	echo 
+	#}
 
-
-while true; do
 
 
 	echo " Welcome user
@@ -72,7 +76,7 @@ array2="home/chinae/Bashing_Boxes/object.pool.txt"
 
 
 	SavingBox() {
-	
+	##- z checks if the string is empty 
 	read  -p "what do you want to name your box:" filename
 	if [ -z "$filename" ]; then
 		echo "Could not save"
@@ -87,7 +91,7 @@ array2="home/chinae/Bashing_Boxes/object.pool.txt"
 	}
 
 
-
+	# mapfile loads a file(or command input) into a bash array
 	LoadingoldBox() {
 	read -p "enter the name of the box you would like to load:" filename
 	datafolder="/home/chinae/Bashing_Boxes/data"
@@ -138,13 +142,12 @@ deleteBox() {
 			exit
 	}
 
-	#load_object_pool() {
-	## shuf -n is a head count and it shuffles the positive integer of the amount in front of  -n
-	## home/chinae/whatever/path is whereit get the random words from , it reads each line as one,
-	## > tells it where to go 
-	## home /chinae /destination is you destination , this is where it will eend up
-#	echo 
-	#}
+generate_random_box(){
+	read -p "How many objects you want?" size 
+	mapfile -t array < <(shuf -n "$size" object.pool.txt)
+	printarray
+}
+
 
 
 
@@ -168,6 +171,9 @@ deleteBox() {
 		9) deleteBox
 			;;
 	   10) Leavegame
-	    	;;       
+	    	;;    
+	   11) generate_random_box
+	   	;;
+	   *) echo "Okay"
+	    	;;	   
 	esac
-done
